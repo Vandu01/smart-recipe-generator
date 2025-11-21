@@ -91,4 +91,36 @@ exports.rateRecipe = async (req, res) => {
         }
 
         const recipe = await Recipe.findById(recipeId);
-        if (!recipe) return res.status(
+        if (!recipe) return res.status(404).json({ message: "Recipe not found" });
+
+        recipe.ratings.push(rating);
+        await recipe.save();
+
+        res.status(200).json({ success: true, message: "Rating added", data: recipe });
+
+    } catch (error) {
+        res.status(500).json({ message: "Server Error", error });
+    }
+};
+
+// Recommendations based on ratings
+exports.getRecommendations = async (req, res) => {
+    try {
+        const recipes = await Recipe.find();
+
+        // Sort by average rating
+        const recommended = recipes.sort((a, b) => {
+            const avgA = a.ratings.length ? a.ratings.reduce((x, y) => x + y) / a.ratings.length : 0;
+            const avgB = b.ratings.length ? b.ratings.reduce((x, y) => x + y) / b.ratings.length : 0;
+            return avgB - avgA;
+        });
+
+        res.status(200).json({
+            success: true,
+            data: recommended.slice(0, 10) // Return top 10
+        });
+
+    } catch (error) {
+        res.status(500).json({ message: "Server Error", error });
+    }
+};
