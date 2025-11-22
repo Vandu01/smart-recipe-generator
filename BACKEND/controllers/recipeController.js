@@ -40,6 +40,7 @@ exports.getAllRecipes = async (req, res) => {
 // Search recipes by ingredients
 exports.searchRecipes = async (req, res) => {
     try {
+          console.log("Received body:", req.body); 
         const { ingredients } = req.body;
 
         if (!ingredients || !Array.isArray(ingredients)) {
