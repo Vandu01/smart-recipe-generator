@@ -54,6 +54,7 @@ export default function AddRecipe() {
         <option value="normal">Normal</option>
         <option value="veg">Veg</option>
         <option value="vegan">Vegan</option>
+         
       </select>
 
       <input
