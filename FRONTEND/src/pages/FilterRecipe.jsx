@@ -2,7 +2,6 @@ import { useState } from "react";
 import API from "../axios";
 
 export default function FilterRecipe() {
-
   const [difficulty, setDifficulty] = useState("");
   const [diet, setDiet] = useState("");
   const [time, setTime] = useState("");
@@ -13,10 +12,9 @@ export default function FilterRecipe() {
       params: {
         difficulty,
         diet,
-        maxTime: time
-      }
+        maxTime: time,
+      },
     });
-
     setRecipes(res.data.data);
   };
 

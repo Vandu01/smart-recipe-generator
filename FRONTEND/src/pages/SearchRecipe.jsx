@@ -7,7 +7,7 @@ export default function SearchRecipe() {
 
   const search = async () => {
     const res = await API.post("/search", {
-      ingredients: ingredients.split(",")
+      ingredients: ingredients.split(",").map(i => i.trim())
     });
     setResults(res.data.data);
   };
@@ -16,19 +16,20 @@ export default function SearchRecipe() {
     <div className="box">
       <h2>Search Recipes</h2>
 
-      <input 
+      <input
         placeholder="Ingredients (comma separated)"
         onChange={(e) => setIngredients(e.target.value)}
       />
 
       <button onClick={search}>Search</button>
 
-      <div>
-        <h3>Results:</h3>
-        {results.map(r => (
-          <p key={r._id}><b>{r.name}</b> — ID: {r._id}</p>
-        ))}
-      </div>
+      <h3>Results:</h3>
+
+      {results.map((r) => (
+        <p key={r._id}>
+          <b>{r.name}</b> — ID: {r._id}
+        </p>
+      ))}
     </div>
   );
 }

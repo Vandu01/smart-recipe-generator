@@ -3,7 +3,7 @@ const Recipe = require("../models/recipeModel");
 // Add a recipe
 exports.addRecipe = async (req, res) => {
     try {
-        const { name, ingredients, instructions } = req.body;
+        const { name, ingredients, instructions, difficulty, diet, cookingTime } = req.body;
 
         if (!name || !ingredients || !instructions) {
             return res.status(400).json({ message: "All fields are required" });
@@ -13,6 +13,9 @@ exports.addRecipe = async (req, res) => {
             name,
             ingredients,
             instructions,
+            difficulty: difficulty || "easy",
+            diet: diet || "normal",
+            cookingTime: cookingTime || 10,
             ratings: []
         });
 

@@ -9,6 +9,9 @@ export default function Navbar() {
         <Link to="/add">Add Recipe</Link>
         <Link to="/search">Search</Link>
         <Link to="/rate">Rate</Link>
+        <Link to="/filter">Filter</Link>
+        <Link to="/all">All Recipes</Link>
+
         <Link to="/recommend">Recommend</Link>
       </div>
     </nav>

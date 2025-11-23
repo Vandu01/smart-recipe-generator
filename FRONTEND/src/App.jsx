@@ -7,6 +7,8 @@ import SearchRecipe from "./pages/SearchRecipe";
 import RateRecipe from "./pages/RateRecipe";
 import Recommend from "./pages/Recommend";
 import FilterRecipe from "./pages/FilterRecipe";
+import AllRecipes from "./pages/AllRecipe";
+
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
   <Route path="/rate" element={<RateRecipe />} />
   <Route path="/recommend" element={<Recommend />} />
   <Route path="/filter" element={<FilterRecipe />} />
+  <Route path="/all" element={<AllRecipes />} />
+
 </Routes>
 
     </BrowserRouter>
