@@ -6,6 +6,7 @@ import AddRecipe from "./pages/AddRecipe";
 import SearchRecipe from "./pages/SearchRecipe";
 import RateRecipe from "./pages/RateRecipe";
 import Recommend from "./pages/Recommend";
+import FilterRecipe from "./pages/FilterRecipe";
 
 function App() {
   return (
@@ -13,12 +14,14 @@ function App() {
       <Navbar />
 
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/add" element={<AddRecipe />} />
-        <Route path="/search" element={<SearchRecipe />} />
-        <Route path="/rate" element={<RateRecipe />} />
-        <Route path="/recommend" element={<Recommend />} />
-      </Routes>
+  <Route path="/" element={<Home />} />
+  <Route path="/add" element={<AddRecipe />} />
+  <Route path="/search" element={<SearchRecipe />} />
+  <Route path="/rate" element={<RateRecipe />} />
+  <Route path="/recommend" element={<Recommend />} />
+  <Route path="/filter" element={<FilterRecipe />} />
+</Routes>
+
     </BrowserRouter>
   );
 }

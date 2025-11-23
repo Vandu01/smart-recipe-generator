@@ -1,0 +1,83 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #eef2f3;
+  padding: 0;
+  margin: 0;
+}
+
+/* NAVBAR */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 30px;
+  background: #0077ff;
+  color: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.nav h2 {
+  margin: 0;
+}
+
+.nav a {
+  margin-left: 20px;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+/* MAIN BOX */
+.box {
+  background: white;
+  padding: 30px;
+  margin: 35px auto;
+  width: 80%;
+  max-width: 700px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* FORM INPUTS */
+input, textarea, select {
+  width: 100%;
+  padding: 12px;
+  margin: 12px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+}
+
+textarea {
+  height: 120px;
+  resize: none;
+}
+
+/* BUTTON */
+button {
+  background: #0077ff;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #005dd1;
+}
+
+/* LIST ITEMS */
+p, li {
+  font-size: 16px;
+  margin: 8px 0;
+}
