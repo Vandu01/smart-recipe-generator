@@ -6,19 +6,25 @@ export default function AddRecipe() {
   const [ingredients, setIngredients] = useState("");
   const [instructions, setInstructions] = useState("");
 
-  // NEW STATES
+  // extra fields
   const [difficulty, setDifficulty] = useState("easy");
   const [diet, setDiet] = useState("normal");
-  const [time, setTime] = useState(10);
+
+  // NEW: separate cooking time fields
+  const [minutes, setMinutes] = useState("");
+  const [seconds, setSeconds] = useState("");
 
   const add = async () => {
     await API.post("/add", {
       name,
-      ingredients: ingredients.split(",").map(i => i.trim()),
+      ingredients: ingredients.split(",").map((i) => i.trim()),
       instructions,
       difficulty,
       diet,
-      cookingTime: Number(time)
+      cookingTime: {
+        minutes: Number(minutes),
+        seconds: Number(seconds)
+      }
     });
 
     alert("Recipe Added!");
@@ -43,26 +49,36 @@ export default function AddRecipe() {
         onChange={(e) => setInstructions(e.target.value)}
       />
 
-      {/* NEW FIELDS */}
+      {/* Difficulty */}
       <select value={difficulty} onChange={(e) => setDifficulty(e.target.value)}>
         <option value="easy">Easy</option>
         <option value="medium">Medium</option>
         <option value="hard">Hard</option>
       </select>
 
+      {/* Diet */}
       <select value={diet} onChange={(e) => setDiet(e.target.value)}>
         <option value="normal">Normal</option>
         <option value="veg">Veg</option>
         <option value="vegan">Vegan</option>
-         
       </select>
 
-      <input
-        type="number"
-        placeholder="Cooking Time (mins)"
-        value={time}
-        onChange={(e) => setTime(e.target.value)}
-      />
+      {/* New cooking time inputs */}
+      <div style={{ display: "flex", gap: "10px" }}>
+        <input
+          type="number"
+          placeholder="Minutes"
+          value={minutes}
+          onChange={(e) => setMinutes(e.target.value)}
+        />
+
+        <input
+          type="number"
+          placeholder="Seconds"
+          value={seconds}
+          onChange={(e) => setSeconds(e.target.value)}
+        />
+      </div>
 
       <button onClick={add}>Add</button>
     </div>

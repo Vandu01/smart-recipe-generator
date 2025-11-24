@@ -6,7 +6,7 @@ _A simple yet powerful web application that recommends recipes based on the ingr
 ## 2. Overview
 
 Smart Recipe Generator is a full-stack project designed to help users quickly find recipes they can cook using the ingredients available at home.  
-Instead of browsing hundreds of recipes online, you simply enter a few ingredients — and the system intelligently filters, matches, and suggests recipes.
+Instead of browsing hundreds of recipes online, you simply enter a few ingredients — and the system intelligently filters, matches and suggests recipes.
 
 This project includes:
 - A clean and responsive frontend UI  
