@@ -15,8 +15,8 @@ const app = express();
 // middlewares
 app.use(cors({
     origin: [
-      "http://localhost:5173",                // local dev
-      "spontaneous-pithivier-532b61.netlify.app" // your deployed Netlify URL
+      "http://localhost:5173",                
+      "https://spontaneous-pithivier-532b61.netlify.app"
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type"],
