@@ -5,7 +5,7 @@ const connectDB = require("./database/db");
 
 
 // Load environment variables
-dotenv.config({ path: "./config.env" });
+dotenv.config({ path:  "./config/.env" });
 
 // Connect MongoDB
 connectDB();
