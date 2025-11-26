@@ -1,39 +1,33 @@
-const express = require("express");
-const cors = require("cors");
-const dotenv = require("dotenv");
-const connectDB = require("./database/db");
+import express from "express";
+import cors from "cors";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
 
-// Load environment variables
-dotenv.config({ path: "./config/.env" });
-
-// Connect MongoDB
-connectDB();
+dotenv.config();
 
 const app = express();
 
-
-app.use(cors({
-  origin: [
-    "http://localhost:5173",
-    "https://spontaneous-pithivier-532b61.netlify.app"
-  ],
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  credentials: true,
-  allowedHeaders: ["Content-Type"]
-}));
-
-// Handle preflight requests
-app.options("*", cors());  
-
+// Middlewares
+app.use(cors());
 app.use(express.json());
 
+// MongoDB Connection
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB Connected Successfully"))
+  .catch((err) => console.log("MongoDB Connection Failed:", err));
+
 // Routes
-const recipeRoutes = require("./routes/recipeRoutes");
+import recipeRoutes from "./routes/recipeRoutes.js";
 app.use("/api/recipes", recipeRoutes);
 
 // Default route
 app.get("/", (req, res) => {
-  res.send("Smart Recipe Generator Backend Running...");
+  res.send("Backend is running successfully 🎉");
 });
 
-module.exports = app;
+const port = process.env.PORT || 8080;
+
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
